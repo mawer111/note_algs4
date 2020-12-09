@@ -7,7 +7,7 @@
  *
  ******************************************************************************/
 
-package study.ss.book.algs4;
+package study.ss.book.algs4.std;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;

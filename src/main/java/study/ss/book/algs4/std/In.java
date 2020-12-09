@@ -7,7 +7,7 @@
  *
  ******************************************************************************/
 
-package study.ss.book.algs4;
+package study.ss.book.algs4.std;
 
 import java.io.BufferedInputStream;
 import java.io.File;

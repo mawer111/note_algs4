@@ -7,7 +7,7 @@
  *
  ******************************************************************************/
 
-package study.ss.book.algs4;
+package study.ss.book.algs4.std;
 
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
@@ -89,6 +89,23 @@ public final class StdOut {
      * Terminates the current line by printing the line-separator string.
      */
     public static void println() {
+        out.println();
+    }
+
+    public static void println(int[] arr) {
+        if (arr == null || arr.length == 0) {
+            out.println("[]");
+            return;
+        }
+        out.print('[');
+        for (int i = 0; i < arr.length; i++) {
+            out.print(arr[i]);
+            if (i >= arr.length - 1) {
+                out.println("]");
+                break;
+            }
+            out.print(',');
+        }
         out.println();
     }
 
