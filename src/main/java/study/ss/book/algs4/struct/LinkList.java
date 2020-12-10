@@ -58,14 +58,6 @@ public class LinkList<T> {
             cur.next = node.next;
             node.next = cur;
             cur = p.next;
-
-//            if (temp != null) {
-//                temp.next = cur;
-//            }
-//            Node next = cur.next;
-//            cur.next = temp;
-//            temp = cur;
-//            cur = next;
         }
 
         return node.next;
