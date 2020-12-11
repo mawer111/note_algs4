@@ -18,6 +18,9 @@ public class Matrix {
         return result;
     }
 
+    public static double mult(double[][] a, double[][] b) {
+        return .0f;
+    }
 
 
 
