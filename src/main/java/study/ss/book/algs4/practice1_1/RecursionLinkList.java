@@ -69,6 +69,9 @@ public class RecursionLinkList {
 
         Node cur = node;
 
+        /**
+         * cur指向第一个需要翻转的节点的位置
+         */
         while (m > 1) {
             prev = cur;
             cur = cur.next;
@@ -78,6 +81,9 @@ public class RecursionLinkList {
         conn = prev;
         tail = cur;
 
+        /**
+         * cur指向最后一个需要翻转的节点的位置
+         */
         while (n > 0) {
             Node t = cur.next;
             cur.next = prev;
@@ -88,7 +94,10 @@ public class RecursionLinkList {
 
         if (conn != null) {
             conn.next = prev;
-        } else {
+        }else{
+            /**
+             * conn为空时，从原顺序的第一个节点就开始翻转，所以需要返回prev节点
+             */
             head = prev;
         }
 
