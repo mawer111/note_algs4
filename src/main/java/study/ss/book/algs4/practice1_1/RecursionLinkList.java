@@ -8,7 +8,7 @@ public class RecursionLinkList {
 
 
     public static void main(String[] args) {
-        Node n1 = assemblyOrderNode(4);
+        Node n1 = assemblyOrderNode(5);
         Node t = n1;
         ArrayList<Node> nodes = new ArrayList<Node>();
         while (t != null) {
@@ -17,7 +17,7 @@ public class RecursionLinkList {
         }
         print(n1);
         StdOut.println();
-        Node node = reverseNode(n1);
+        Node node = reversePartNode(n1,2,4);
         print(node);
     }
 
@@ -37,10 +37,6 @@ public class RecursionLinkList {
      * ⬇️                     ⬇️
      * 1 -> null     ---->    2 -> 1 -> null
      *
-     *
-     *
-     *
-     * 循环翻转链表
      * @param node
      * @param <T>
      * @return
@@ -56,9 +52,63 @@ public class RecursionLinkList {
         return pre;
     }
 
+    /**
+     * 部分翻转链表
+     * @param node
+     * @param m
+     * @param n
+     * @param <T>
+     * @return
+     */
+    public static <T> Node<T> reversePartNode(Node<T> node, int m, int n) {
+        Node head = node;
+        Node prev = null;
+
+        Node conn = null;
+        Node tail = null;
+
+        Node cur = node;
+
+        while (m > 1) {
+            prev = cur;
+            cur = cur.next;
+            m--;
+            n--;
+        }
+        conn = prev;
+        tail = cur;
+
+        while (n > 0) {
+            Node t = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = t;
+            n--;
+        }
+
+        if (conn != null) {
+            conn.next = prev;
+        } else {
+            head = prev;
+        }
+
+        tail.next = cur;
+
+        return head;
+    }
+
+
 
     /**
      * 递归翻转链表
+     * 把递归分成 递和归两个步骤考虑
+     *
+     * 递：f(n) = if n.next != null f(n.next) else return n
+     *
+     * 归:
+     * 在归的过程中将每个节点和他的后继翻转
+     * 实际是将单链表从后向前遍历
+     *
      * @param node
      * @param <T>
      * @return
@@ -71,7 +121,6 @@ public class RecursionLinkList {
         Node t = node.next;
         t.next = node;
         node.next = null;
-
         return newNode;
     }
 
