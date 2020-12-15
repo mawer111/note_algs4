@@ -9,6 +9,13 @@ public class Stack<T> {
         T item;
     }
 
+    public Node<T> peek() {
+        if (first == null) {
+            return null;
+        }
+        return this.first;
+    }
+
     public void push(T v) {
         Node<T> tNode = new Node<T>();
         tNode.item = v;

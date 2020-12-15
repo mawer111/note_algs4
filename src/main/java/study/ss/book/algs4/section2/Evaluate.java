@@ -1,5 +1,6 @@
 package study.ss.book.algs4.section2;
 
+import study.ss.book.algs4.std.StdOut;
 import study.ss.book.algs4.struct.Stack;
 
 public class Evaluate {
@@ -29,7 +30,7 @@ public class Evaluate {
                 if (op.equals("/")) valueStack.push(pop1 / pop);
             } else valueStack.push(Double.valueOf(c));
         }
-        System.out.println(valueStack.pop());
+        StdOut.println(valueStack.pop());
     }
 
 
