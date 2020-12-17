@@ -3,9 +3,11 @@ package study.ss.book.algs4.practice1_3;
 import study.ss.book.algs4.Practice;
 
 @Practice(value = "1.3.33")
-public class LinkDeque implements Deque{
+public class LinkDeque<T> implements Deque<T>{
 
-    private Node head;
+    private Node<T> head;
+
+    private Node<T> tail;
 
     private int size;
 
@@ -19,10 +21,12 @@ public class LinkDeque implements Deque{
         return size;
     }
 
+
+
     @Override
-    public void pushLeft(Item item) {
+    public void pushLeft(T item) {
         if (head == null) {
-            head = new Node(item);
+            tail = head = new Node(item);
         }else{
             Node node = new Node(item);
             node.next = head;
@@ -33,50 +37,71 @@ public class LinkDeque implements Deque{
     }
 
     @Override
-    public void pushRight(Item item) {
+    public void pushRight(T item) {
         if (head == null) {
-            head = new Node(item);
+            tail = head = new Node(item);
         }else{
             Node node = new Node(item);
-            Node temp = head;
-            while (temp.next != null) {
-                temp = temp.next;
-            }
-            temp.next = node;
-            node.prev = temp;
+            tail.next = node;
+            node.prev = tail;
+            tail = node;
         }
         size++;
     }
 
     @Override
-    public Item popLeft() {
-        if (head.next != null) {
-            Node result = head;
-            Node next = head.next;
-            next.prev = null;
-            head.next = null;
-            head = next;
-            size --;
-            return result.v;
-        }else{
-            size --;
-            return head.v;
+    public T popLeft() {
+        if (head == null) {
+            return null;
         }
+        if (head == tail) {
+            Node<T> res = head;
+            head = tail = null;
+            size --;
+            return res.v;
+        }
+        Node<T> result = head;
+        head.next.prev = null;
+        head = head.next;
+        size --;
+        return result.v;
     }
 
     @Override
-    public Item popRight() {
-        return null;
+    public T popRight() {
+        if (head == null) {
+            return null;
+        }
+        if (head == tail) {
+            Node<T> res = head;
+
+            head = tail = null;
+            size --;
+            return res.v;
+        }
+        Node<T> result = tail;
+        tail.prev.next = null;
+        tail = tail.prev;
+        size --;
+        return result.v;
     }
 
-    static class Node{
+    static class Node<T>{
         Node prev;
         Node next;
-        Item v;
+        T v;
 
-        public Node(Item v) {
+        public Node(T v) {
             this.v = v;
         }
+    }
+
+    public static void main(String[] args) {
+        LinkDeque<Integer> integerLinkDeque = new LinkDeque<Integer>();
+        integerLinkDeque.pushLeft(1);
+        integerLinkDeque.pushLeft(2);
+        System.out.println(integerLinkDeque.popLeft());
+        System.out.println(integerLinkDeque.popLeft());
     }
 
 }
