@@ -21,6 +21,7 @@ public class RecursionLinkList {
         print(node);
     }
 
+
     /**
      * 循环翻转链表
      * node指向当前节点，将node遍历过的视为已经翻转过的节点，所以只需要将当前节点的next指向之前的节点
