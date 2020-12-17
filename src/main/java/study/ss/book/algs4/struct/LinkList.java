@@ -11,6 +11,12 @@ public class LinkList<T> {
         T item;
     }
 
+    public void push(T node) {
+        Node<T> tNode = new Node<T>();
+        tNode.item = node;
+        push(tNode);
+
+    }
     public void push(Node node) {
         node.next = first;
         this.first = node;
