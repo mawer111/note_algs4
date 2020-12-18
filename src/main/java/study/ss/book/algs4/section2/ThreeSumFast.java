@@ -1,12 +1,13 @@
 package study.ss.book.algs4.section2;
 
+import study.ss.book.algs4.Algorithm;
 import study.ss.book.algs4.BinarySearch;
 
 import java.util.Arrays;
-
+@Algorithm("1.4.5.2")
 public class ThreeSumFast {
 
-    public int count(int[] a) {
+    public static int count(int[] a) {
         int n = a.length;
         int cnt = 0;
         Arrays.sort(a);
