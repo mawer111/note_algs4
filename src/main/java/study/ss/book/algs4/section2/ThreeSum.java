@@ -1,6 +1,7 @@
 package study.ss.book.algs4.section2;
 
 import study.ss.book.algs4.Algorithm;
+import study.ss.book.algs4.Practice;
 import study.ss.book.algs4.std.In;
 import study.ss.book.algs4.std.StdOut;
 
@@ -9,6 +10,7 @@ import java.io.File;
 @Algorithm("1.4.2.1")
 public class ThreeSum {
 
+    @Practice("1.4.2")
     public static int count(int[] a) {
         int cnt = 0;
         for (int i = 0; i < a.length; i++) {
